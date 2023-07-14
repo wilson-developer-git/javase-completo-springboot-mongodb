@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wilson.dev.domain.User;
+import com.wilson.dev.dto.UserDTO;
 import com.wilson.dev.repository.UserRepository;
 import com.wilson.dev.service.exception.ObjectNotFoundException;
 
@@ -28,5 +29,12 @@ public class UserService {
 		return userOpt.get();
 	}
 	
+	public User insert(User user) {
+		return userRepository.insert(user);
+	}
+	
+	public User fromDTO(UserDTO userDTO) {
+		return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+	}
 	
 }
